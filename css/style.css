@@ -32,7 +32,7 @@ body{
     color:#2C3531;
     font-family:'Nunito', sans-serif;
     font-size:11pt;
-    line-height:1.65;
+    line-height:1.4;
     padding:5mm;
 }
 
@@ -234,8 +234,8 @@ h2{
 
 .corner{
     position:absolute;
-    width: 80px;
-    height:80px;
+    width: 60px;
+    height:60px;
     opacity:.6;
     pointer-events:none;
 }
@@ -334,6 +334,9 @@ h2{
     margin-bottom: 50px;
 }
 
+.anotacoes {
+    display: none;
+}
 
 /* ==================================================
    PRINT
@@ -349,15 +352,57 @@ h2{
         display:none !important;
     }
 
+    body {
+        padding: 0;
+    }
+
     .page{
-        background:#FFFFFF;
+        background:#ffffff;
     }
 
     .page-frame{
-        height:583mm;
-        min-width: 100%;
-        border:3px solid #E0DACD;
+        height:582mm;
+        width: 200mm;
+        border:none;
         box-shadow:none;
+        padding: 0;
+    }
+
+    .corner{
+        display: none;
+    }
+
+    .corner-print{
+        position:absolute;
+        width: 40px;
+        height:40px;
+        pointer-events:none;
+    }
+
+    #container-1{
+        position:relative;
+        margin-top: 5mm;
+        margin-left:auto;
+        margin-right:auto;
+        width: 100%;
+        height:287mm;
+        background:#FFFFFF;
+        border:1px solid var(--sage);
+        border-radius:8px;
+        padding:35px;
+    }
+
+    #container-2{
+        position:relative;
+        margin-top: 5mm;
+        margin-left:auto;
+        margin-right:auto;
+        width: 100%;
+        height:287mm;
+        background:#FFFFFF;
+        border:1px solid var(--sage);
+        border-radius:8px;
+        padding:35px;
     }
 
     .page-break-after{
@@ -368,12 +413,37 @@ h2{
     .page-break-before{
         margin-top:40px;
     }
+
+    .anotacoes{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    min-height:250px;
+    }
+
+    .anotacoes h3{
+        font-size:1rem;
+        margin-bottom:20px;
+        color:var(--sage);
+    }
+
+    .linhas-anotacao{
+        flex:1;
+        background-image:
+            repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 27px,
+                rgba(124, 152, 133, 0.7) 28px
+            );
+        min-height:300px;
+    }
 }
 
 /* ==================================================
    CELULAR
 ================================================== */
-@media (max-width: 768px){
+@media (max-width: 568px){
 
     body{
         padding:0;
