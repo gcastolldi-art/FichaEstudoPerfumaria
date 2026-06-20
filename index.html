@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ficha de Bancada</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="page">
+    <div class="navigation-bar noprint">
+
+        <button id="btnPrev" class="btn btn-outline-secondary btn-sm">
+            ← Anterior
+        </button>
+        <select id="notaSelector" class="form-select">
+        </select>
+        <button id="btnNext" class="btn btn-outline-secondary btn-sm">
+            Próxima →
+        </button>
+    </div>
+
+    <div class="page-frame">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div class="container-fluid">
+                <div class="header">
+                    <p class="subtitle"> Manual Técnico de Perfumaria — Ficha de Bancada </p>
+                    <h1 id="nome"></h1>
+                    <p id="subtitulo" class="subtitulo"></p>
+                    <p id="cientifico" class="scientific-name"></p>
+                </div>
+                <section>
+                    <h2 class="identificacao">1. Identificação Geral</h2>
+                    <div id="identificacao"></div>
+                </section>
+                <section>
+                    <h2 class="comportamento">2. Comportamento Físico na Fórmula</h2>
+                    <div id="comportamento"></div>
+                </section>
+                <section class="page-break-after">
+                    <h2 class="perfil-olfativo">3. Perfil Olfativo Sensorial</h2>
+                    <div id="perfil"></div>
+                    <div class="timeline">
+                        <h3 class="mini-title"> Evolução no Tempo </h3>
+                        <div id="timeline"></div>
+                    </div>
+                </section>
+
+                <section class="page-break-before">
+                    <h2 class="aplicacao-pratica">4. Aplicação Prática e Comportamento de Bancada</h2>
+                    <div id="aplicacao"></div>
+                </section>
+                <section>
+                    <h2 class="seguranca">5. Dados de Segurança e Regulamentação</h2>
+                    <div id="seguranca"></div>
+                </section>
+        </div>
+    </div>
+
+    <script src="js/dados.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
