@@ -4,7 +4,10 @@ const selector = document.getElementById("notaSelector");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
 
-/*LISTA ORDENADA APENAS PARA O SELECT*/
+/* ==========================================
+   LISTA ORDENADA
+========================================== */
+
 const notasOrdenadas = [...notas].sort((a, b) =>
     a.nome.localeCompare(
         b.nome,
@@ -13,59 +16,110 @@ const notasOrdenadas = [...notas].sort((a, b) =>
     )
 );
 
-/*PREENCHE O SELECT*/
+/* ==========================================
+   PREENCHE O SELECT
+========================================== */
+
 selector.innerHTML = "";
 
 notasOrdenadas.forEach((nota) => {
+
     const option = document.createElement("option");
+
     option.value = nota.id;
     option.textContent = nota.nome;
+
     selector.appendChild(option);
+
 });
 
-/*CONTROLE DOS BOTÕES*/
+/* ==========================================
+   CONTROLE DOS BOTÕES
+========================================== */
+
 function atualizarBotoes(){
-    btnPrev.disabled = indiceAtual === 0;
+
+    btnPrev.disabled =
+        indiceAtual === 0;
+
     btnNext.disabled =
-        indiceAtual === notas.length - 1;
+        indiceAtual === notasOrdenadas.length - 1;
 }
 
-/*BOTÃO PRÓXIMA*/
+/* ==========================================
+   BOTÃO PRÓXIMA
+========================================== */
+
 btnNext.addEventListener("click", () => {
-    if(indiceAtual < notas.length - 1){
+
+    if(indiceAtual < notasOrdenadas.length - 1){
+
         indiceAtual++;
+
         carregarNota(indiceAtual);
     }
+
 });
 
-/*BOTÃO ANTERIOR*/
+/* ==========================================
+   BOTÃO ANTERIOR
+========================================== */
+
 btnPrev.addEventListener("click", () => {
+
     if(indiceAtual > 0){
+
         indiceAtual--;
+
         carregarNota(indiceAtual);
     }
+
 });
 
-/*SELETOR*/
+/* ==========================================
+   SELECTOR
+========================================== */
+
 selector.addEventListener("change", (e) => {
-    const idSelecionado = e.target.value;
+
+    const idSelecionado =
+        e.target.value;
+
     indiceAtual =
         notasOrdenadas.findIndex(
             nota => nota.id === idSelecionado
         );
-    carregarNota(indiceAtual);
+
+    if(indiceAtual >= 0){
+
+        carregarNota(indiceAtual);
+
+    }
+
 });
 
-/*CARREGA UMA FICHA*/
+/* ==========================================
+   CARREGA FICHA
+========================================== */
+
 function carregarNota(index){
 
-    const nota = notasOrdenadas[index];
+    const nota =
+        notasOrdenadas[index];
+
+    if(!nota) return;
+
+    history.replaceState(
+        null,
+        "",
+        `?nota=${nota.id}`
+    );
 
     document.getElementById("nome").innerHTML =
-        `${nota.nome}`;
+        nota.nome;
 
     document.getElementById("subtitulo").innerHTML =
-        `${nota.subtitulo}`;
+        nota.subtitulo;
 
     document.getElementById("cientifico").innerHTML =
         `Nome Científico: ${nota.nomeCientifico}`;
@@ -180,5 +234,31 @@ function carregarNota(index){
     atualizarBotoes();
 }
 
-/*INICIALIZAÇÃO*/
-carregarNota(0);
+/* ==========================================
+   INICIALIZAÇÃO POR URL
+========================================== */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const notaUrl =
+    params.get("nota");
+
+if(notaUrl){
+
+    const indice =
+        notasOrdenadas.findIndex(
+            nota => nota.id === notaUrl
+        );
+
+    if(indice >= 0){
+
+        indiceAtual = indice;
+
+    }
+
+}
+
+carregarNota(indiceAtual);
