@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fichas de Bancada - Manual Técnico de Perfumaria</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+@page{
+    size:A4;
+    margin:0;
+}
+
+:root{
+    --bg:#FDFBF7;
+    --title:#24384A;
+    --subtitle:#4A5E53;
+    --text:#5E6E64;
+    --sage:#7C9885;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+    background:var(--bg);
+    font-family:'Nunito',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.cover{
+
+    position:relative;
+    width:210mm;
+    height:297mm;
+    background: #296d47;
+    overflow:hidden;
+    border:1px solid rgba(124,152,133,.35);
+}
+
+.frame{
+    position:absolute;
+    background:var(--bg);
+    inset:8mm;
+    border:1px solid rgba(124,152,133,.45);
+    border-radius:8px;
+}
+
+/* Marca d'água */
+
+.watermark{
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:180mm;
+    height:180mm;
+    opacity:.2;
+    background-image:url("img/watermark.png");
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    pointer-events:none;
+}
+
+/* Ornamentos */
+
+.corner{
+    position:absolute;
+    width:50mm;    
+    height:50mm;
+    background-image:url("img/corner.png");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+
+.corner-top-left{
+    top:8mm;
+    left:8mm;
+}
+
+.corner-bottom-right{
+    bottom:8mm;
+    right:8mm;
+    transform:rotate(180deg);
+}
+
+/* Conteúdo */
+
+.content{
+    position:relative;
+    height:100%;
+    padding:28mm 24mm;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.badge{
+    font-size:11pt;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--sage);
+    font-weight:700;
+    margin-bottom:18mm;
+}
+
+.title{
+    font-size:30pt;
+    line-height:1.1;
+    font-weight:900;
+    color:var(--title);
+    margin:0;
+}
+
+.subtitle{
+    font-size:18pt;
+    font-weight:700;
+    color:var(--subtitle);
+    margin-top:8mm;
+    letter-spacing:.5px;
+}
+
+.separator{
+    width:90mm;
+    height:2px;
+    background:linear-gradient(
+        to right,
+        transparent,
+        var(--sage),
+        transparent
+    );
+    margin:14mm 0;
+}
+
+.description{
+    max-width:120mm;
+    font-size:13pt;
+    line-height:1.8;
+    color:var(--text);
+    font-weight:400;
+}
+
+.volume{
+    margin-top:18mm;
+    font-size:16pt;
+    font-weight:800;
+    color:var(--subtitle);
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.edition{
+    margin-top:4mm;
+    font-size:12pt;
+    color:var(--sage);
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.author{
+    margin-top:24mm;
+    font-size:15pt;
+    font-weight:700;
+    color:var(--title);
+}
+
+.location{
+    margin-top:3mm;
+    font-size:11pt;
+    color:var(--text);
+    letter-spacing:1px;
+}
+
+.footer-line{
+    position:absolute;
+    bottom:22mm;
+    width:70mm;
+    height:1px;
+    background:rgba(124,152,133,.5);
+}
+
+@media screen{
+    body{
+        padding:30px;
+    }
+
+    .cover{
+        box-shadow:0 10px 35px rgba(0,0,0,.08);
+    }
+}
+
+@media print{
+    body{
+        padding:0;
+    }
+
+    .cover{
+        border:none;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cover">
+
+    <div class="frame"></div>
+
+    <div class="watermark"></div>
+
+    <div class="corner corner-top-left"></div>
+    <div class="corner corner-bottom-right"></div>
+
+    <div class="content">
+
+        <div class="badge">
+            Manual Técnico de Perfumaria
+        </div>
+
+        <h1 class="title">
+            FICHAS DE BANCADA
+        </h1>
+
+        <div class="subtitle">
+            PARA CONSULTA E ANOTAÇÕES
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="description">
+
+            Atlas de Matérias-Primas Naturais,
+            Óleos Essenciais, Absolutos,
+            Resinas e Aromaquímicos.
+
+            <br><br>
+
+            Sistema de Consulta Técnica para
+            Estudo, Formulação e Desenvolvimento
+            de Fragrâncias.
+
+        </div>
+
+        <div class="volume">
+            Volume I
+        </div>
+
+        <div class="edition">
+            Edição de Estudo
+        </div>
+
+        <div class="author">
+            Márcio Barile
+        </div>
+
+        <div class="location">
+            Curitiba • Brasil
+        </div>
+
+        <div class="footer-line"></div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
